@@ -1,5 +1,6 @@
 # XORList
 Second AaDS project.
+
 XOR linked list (AiSD 2021)
 Zadanie polega na implementacji listy dwukierunkowej. Klasyczna lista dwukierunkowa przechowuje w węzłach adresy następnika i poprzednika, w naszym zadaniu lista przechowuje w węzłach jedynie xor tych adresów. Pozwala to na ok. 50 zaoszczędzenie pamięci wykorzystywanej na przez struktur listy.
 
