@@ -1,14 +1,16 @@
 #include <iostream>
-using namespace std;
+#include "XORList.h"
 
 const int BUFFER_SIZE = 100;
 
 int main() {
-    ios_base::sync_with_stdio(false);   //
-    cin.tie(nullptr);                  // faster io
+    std::ios_base::sync_with_stdio(false);   //
+    std::cin.tie(nullptr);                  // faster io
+
+    XORList<int> list;
 
     char command[BUFFER_SIZE];
-    while (cin >> command) {
+    while (std::cin >> command) { // to change
 
     }
 

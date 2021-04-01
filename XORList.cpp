@@ -11,6 +11,8 @@ XORList<T>::XORList() {
     begin = nullptr;
     end = nullptr;
     actual = nullptr;
+    next = nullptr;
+    prev = nullptr;
 }
 
 Template
@@ -29,6 +31,16 @@ Node<T>* XORList<T>::GetActual() const {
 }
 
 Template
+Node<T>* XORList<T>::GetNext() const {
+    return next;
+}
+
+Template
+Node<T>* XORList<T>::GetPrev() const {
+    return prev;
+}
+
+Template
 Node<T>* XORList<T>::Create(Node<T> *ptr, T key) {
     ptr = new Node(key);
     return ptr;
@@ -41,8 +53,3 @@ bool XORList<T>::isEmpty() const {
 }
 
 Template
-void XORList<T>::PushFront() {
-    if (isEmpty()) {
-
-    }
-}
