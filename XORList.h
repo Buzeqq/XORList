@@ -5,43 +5,47 @@
 #ifndef XORLIST_XORLIST_H
 #define XORLIST_XORLIST_H
 
-template<class T>
+#include <iostream>
+#include <string>
+
 struct Node {
-    T key;
+    int key;
     Node* addressXOR;
 
-    explicit Node(T key);
+    explicit Node(int key);
+    void SetXOR(Node* predecessor, Node* successor);
+    Node* GetNext(Node* predecessor) const;
+    Node* GetPrev(Node* successor) const;
 };
 
-template<class T>
 class XORList {
 
 public:
     XORList();
-    Node<T>* Begin() const; // getter for begin
-    Node<T>* End() const; // getter for end
-    Node<T>* GetActual() const; // getter for actual
-    Node<T>* GetPrev() const; // getter for predecessor of actual
-    Node<T>* GetNext() const; // getter for successor of actual
+    [[nodiscard]] Node* Begin() const; // getter for begin
+    [[nodiscard]] Node* End() const; // getter for end
+    [[nodiscard]] Node* GetActual() const; // getter for actual
+    [[nodiscard]] Node* GetPrev() const; // getter for predecessor of actual
+    [[nodiscard]] Node* GetNext() const; // getter for successor of actual
 
     void Next() const; // print next element in list and change actual
     void Previous() const; //print previous element in list and change actual
 
-    void PushFront(T); // adding node at front
-    void PushBack(); // adding node at back
-    void AddBeforeActual(); // adding node before actual
+    void PushFront(int key); // adding node at front
+    void PushBack(int key); // adding node at back
+    void AddBeforeActual(int key); // adding node before actual
 
     void PopFront(); // deleting node at front
     void PopBack(); // deleting node at back
-    void DeleteValues(T n); // deleting all nodes with key n
+    void DeleteValues(int n); // deleting all nodes with key n
     void DeleteActual(); // deleting node that is pointed by actual
 
     void Print() const; // print list (maybe operator<< overload)
     void PrintBackward() const; // print list but backwards
 
-    bool isEmpty() const; // checks if list is empty
+    [[nodiscard]] bool isEmpty() const; // checks if list is empty
 
-    ~XORList(); // destructor TODO remember to free all the memory
+    //~XORList(); // destructor TODO remember to free all the memory
 
     enum COMMANDS {
         ACTUAL = 0,
@@ -59,12 +63,11 @@ public:
     };
 
 private:
-    Node<T>* begin; // begin of the list
-    Node<T>* end; // end of the list
-    Node<T>* actual; // helping pointer
-    Node<T>* prev; // predecessor of actual
-    Node<T>* next; // successor of actual
-    Node<T>* Create(Node<T>* ptr, T key);
+    Node* begin; // begin of the list
+    Node* end; // end of the list
+    Node* actual; // helping pointer
+    Node* prev; // predecessor of actual
+    Node* next; // successor of actual
 };
 
 #endif //XORLIST_XORLIST_H

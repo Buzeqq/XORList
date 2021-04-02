@@ -1,13 +1,9 @@
 //
 // Created by Milosz Chojnacki on 31.03.2021.
 //
-
-#define Template template<class T>
-
 #include "XORList.h"
 
-Template
-XORList<T>::XORList() {
+XORList::XORList() {
     begin = nullptr;
     end = nullptr;
     actual = nullptr;
@@ -15,41 +11,59 @@ XORList<T>::XORList() {
     prev = nullptr;
 }
 
-Template
-Node<T>* XORList<T>::Begin() const {
+Node* XORList::Begin() const {
     return begin;
 }
 
-Template
-Node<T>* XORList<T>::End() const {
+Node* XORList::End() const {
     return end;
 }
 
-Template
-Node<T>* XORList<T>::GetActual() const {
+Node* XORList::GetActual() const {
     return actual;
 }
 
-Template
-Node<T>* XORList<T>::GetNext() const {
+Node* XORList::GetNext() const {
     return next;
 }
 
-Template
-Node<T>* XORList<T>::GetPrev() const {
+Node* XORList::GetPrev() const {
     return prev;
 }
 
-Template
-Node<T>* XORList<T>::Create(Node<T> *ptr, T key) {
-    ptr = new Node(key);
-    return ptr;
-}
-
-Template
-bool XORList<T>::isEmpty() const {
+bool XORList::isEmpty() const {
     if (begin == nullptr) return true;
     else return false;
 }
 
-Template
+void XORList::PushFront(int key) {
+    if (isEmpty()) {
+        begin = new Node(key);
+        begin->SetXOR(nullptr, nullptr);
+        end = actual = begin;
+    } else {
+        auto* tmp = new Node(key);
+        tmp->SetXOR(nullptr, begin);
+        if (begin == actual) prev = tmp;
+        begin->SetXOR(tmp, begin->GetNext(nullptr));
+        begin = tmp;
+    }
+}
+
+void XORList::PushBack(int key) {
+    if (isEmpty()) {
+        begin = new Node(key);
+        begin->SetXOR(nullptr, nullptr);
+        end = actual = begin;
+    } else {
+        auto* tmp = new Node(key);
+        tmp->SetXOR(end, nullptr);
+        if (end == actual) next = tmp;
+        end->SetXOR(end->GetPrev(nullptr), tmp);
+        end = tmp;
+    }
+}
+
+void XORList::AddBeforeActual(int key) {
+
+}
