@@ -68,6 +68,10 @@ private:
     Node* actual; // helping pointer
     Node* prev; // predecessor of actual
     Node* next; // successor of actual
+
+    static Node* XOR(Node* left, Node* right) {
+        return (Node*)((unsigned long)left ^ (unsigned long)right);
+    }
 };
 
 #endif //XORLIST_XORLIST_H

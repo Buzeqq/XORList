@@ -67,3 +67,23 @@ void XORList::PushBack(int key) {
 void XORList::AddBeforeActual(int key) {
 
 }
+
+void XORList::Print() const {
+    Node* actualTmp = begin, *prevTmp = nullptr;
+    while (actualTmp != nullptr) { // if you can move actualTmp and prevTmp to the right
+        std::cout << actualTmp->key << " ";
+        Node* tmp = actualTmp;
+        actualTmp = actualTmp->GetNext(prevTmp);
+        prevTmp = tmp;
+    }
+}
+
+void XORList::PrintBackward() const {
+    Node* actualTmp = end, *nextTmp = nullptr;
+    while (actualTmp != nullptr) {
+        std::cout << actualTmp->key << " ";
+        Node* tmp = actualTmp;
+        actualTmp = actualTmp->GetPrev(nextTmp);
+        nextTmp = tmp;
+    }
+}
