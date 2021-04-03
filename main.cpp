@@ -24,21 +24,17 @@ int main() {
         else if (command == "PRINT_BACKWARD") {}
     }*/
 
+    list.PushBack(4);
     list.PushBack(3);
-    list.PushFront(2);
+    list.PushBack(2);
     list.PushBack(1);
-    list.PushFront(4);
+    list.PushBack(0);
     list.Print();
     std::cout << std::endl;
-    list.PrintBackward();
-    list.AddBeforeActual(9);
-    std::cout << std::endl;
+    list.PopFront();
+    list.PopFront();
     list.Print();
     std::cout << std::endl;
-    std::cout << list.Next()->GetKey() << std::endl;
-    std::cout << list.Next()->GetKey() << std::endl;
-    std::cout << list.Previous()->GetKey() << std::endl;
-    std::cout << list.Previous()->GetKey() << std::endl;
 
     return 0;
 }

@@ -30,20 +30,20 @@ public:
     [[nodiscard]] Node* End() const; // getter for end
     [[nodiscard]] Node* Actual() const; // getter for actual
 
-    [[nodiscard]] Node* Next(); // print next element in list and change actual
-    [[nodiscard]] Node* Previous(); //print previous element in list and change actual
+    Node* Next(); // sets new actual as successor of actual and returns new actual
+    Node* Previous(); // sets new actual as predecessor of actual and returns new actual
 
-    void PushFront(int key); // adding node at front
-    void PushBack(int key); // adding node at back
-    void AddBeforeActual(int key); // adding node before actual
+    void PushFront(int key); // adds node at front
+    void PushBack(int key); // adds node at back
+    void AddBeforeActual(int key); // adds node before actual
 
-    void PopFront(); // deleting node at front
-    void PopBack(); // deleting node at back
-    void DeleteValues(int n); // deleting all nodes with key n
-    void DeleteActual(); // deleting node that is pointed by actual
+    void PopFront(); // deletes node at front
+    void PopBack(); // deletes node at back
+    void DeleteValues(int n); // deletes all nodes with key n
+    void DeleteActual(); // deletes node that is pointed by actual
 
-    void Print() const; // print list (maybe operator<< overload)
-    void PrintBackward() const; // print list but backwards
+    void Print() const; // prints list (maybe operator<< overload)
+    void PrintBackward() const; // prints list, but backwards
 
     [[nodiscard]] bool isEmpty() const; // checks if list is empty
 
