@@ -45,7 +45,7 @@ public:
 
     [[nodiscard]] bool isEmpty() const; // checks if list is empty
 
-    //~XORList(); // destructor TODO remember to free all the memory
+    ~XORList(); // destructor
 
     enum COMMANDS {
         ACTUAL = 0,

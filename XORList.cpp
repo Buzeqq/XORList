@@ -87,3 +87,14 @@ void XORList::PrintBackward() const {
         nextTmp = tmp;
     }
 }
+
+XORList::~XORList() {
+    Node* actualTmp = begin, *prevTmp = nullptr;
+    while (actualTmp != nullptr) {
+        Node* tmp = actualTmp;
+        actualTmp = actualTmp->GetPrev(prevTmp);
+        delete prevTmp; // deleting nullptr has no effect
+        prevTmp = tmp;
+    }
+    delete end; // in order to free all memory we have to do also this
+}
