@@ -11,23 +11,23 @@ XORList::XORList() {
     prev = nullptr;
 }
 
-Node* XORList::Begin() const {
+XORList::Node* XORList::Begin() const {
     return begin;
 }
 
-Node* XORList::End() const {
+XORList::Node* XORList::End() const {
     return end;
 }
 
-Node* XORList::GetActual() const {
+XORList::Node* XORList::GetActual() const {
     return actual;
 }
 
-Node* XORList::GetNext() const {
+XORList::Node* XORList::GetNext() const {
     return next;
 }
 
-Node* XORList::GetPrev() const {
+XORList::Node* XORList::GetPrev() const {
     return prev;
 }
 

@@ -8,17 +8,18 @@
 #include <iostream>
 #include <string>
 
-struct Node {
-    int key;
-    Node* addressXOR;
-
-    explicit Node(int key);
-    void SetXOR(Node* predecessor, Node* successor);
-    Node* GetNext(Node* predecessor) const;
-    Node* GetPrev(Node* successor) const;
-};
-
 class XORList {
+    struct Node {
+    private:
+        int key;
+        Node* addressXOR;
+
+    public:
+        explicit Node(int key);
+        void SetXOR(Node* predecessor, Node* successor);
+        Node* GetNext(Node* predecessor) const;
+        Node* GetPrev(Node* successor) const;
+    };
 
 public:
     XORList();

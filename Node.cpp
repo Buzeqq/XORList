@@ -3,19 +3,19 @@
 //
 #include "XORList.h"
 
-Node::Node(int key) {
+XORList::Node::Node(int key) {
     this->key = key;
     addressXOR = nullptr;
 }
 
-void Node::SetXOR(Node* predecessor, Node* successor) {
+void XORList::Node::SetXOR(Node* predecessor, Node* successor) { // probably should be moved to the constructor
     addressXOR = (Node*)((unsigned long)predecessor ^ (unsigned long)successor);
 }
 
-Node* Node::GetNext(Node* predecessor) const {
-    return (Node*)((unsigned long)addressXOR ^ (unsigned long)predecessor);
-}
+XORList::Node* XORList::Node::GetNext(XORList::Node* predecessor) const {   // this function is same as GetPrev function
+    return (Node*)((unsigned long)addressXOR ^ (unsigned long)predecessor); // and I did it to make code more clear if
+}                                                                           // I want to go to prev or next
 
-Node* Node::GetPrev(Node* successor) const {
+XORList::Node* XORList::Node::GetPrev(XORList::Node* successor) const { // for the comment look up at line 15
     return (Node*)((unsigned long)addressXOR ^ (unsigned long)successor);
 }
