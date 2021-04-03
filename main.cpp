@@ -31,6 +31,14 @@ int main() {
     list.Print();
     std::cout << std::endl;
     list.PrintBackward();
+    list.AddBeforeActual(9);
+    std::cout << std::endl;
+    list.Print();
+    std::cout << std::endl;
+    std::cout << list.Next()->GetKey() << std::endl;
+    std::cout << list.Next()->GetKey() << std::endl;
+    std::cout << list.Previous()->GetKey() << std::endl;
+    std::cout << list.Previous()->GetKey() << std::endl;
 
     return 0;
 }

@@ -15,22 +15,23 @@ class XORList {
         Node* addressXOR;
 
     public:
-        explicit Node(int key);
-        void SetXOR(Node* predecessor, Node* successor);
-        Node* GetNext(Node* predecessor) const;
-        Node* GetPrev(Node* successor) const;
+        Node(int key, Node* predecessor, Node* successor);
+
+        [[nodiscard]] int GetKey() const; // getter for key
+        Node* GetPrev(Node* successor) const; // getter for pointer of predecessor
+        Node* GetNext(Node* predecessor) const; // getter for pointer of successor
+
+        void SetXOR(Node* predecessor, Node* successor); // setter for addressXOR
     };
 
 public:
     XORList();
     [[nodiscard]] Node* Begin() const; // getter for begin
     [[nodiscard]] Node* End() const; // getter for end
-    [[nodiscard]] Node* GetActual() const; // getter for actual
-    [[nodiscard]] Node* GetPrev() const; // getter for predecessor of actual
-    [[nodiscard]] Node* GetNext() const; // getter for successor of actual
+    [[nodiscard]] Node* Actual() const; // getter for actual
 
-    void Next() const; // print next element in list and change actual
-    void Previous() const; //print previous element in list and change actual
+    [[nodiscard]] Node* Next(); // print next element in list and change actual
+    [[nodiscard]] Node* Previous(); //print previous element in list and change actual
 
     void PushFront(int key); // adding node at front
     void PushBack(int key); // adding node at back
@@ -73,6 +74,9 @@ private:
     static Node* XOR(Node* left, Node* right) {
         return (Node*)((unsigned long)left ^ (unsigned long)right);
     }
+
+    [[nodiscard]] Node* GetPrev() const; // getter for predecessor of actual
+    [[nodiscard]] Node* GetNext() const; // getter for successor of actual
 };
 
 #endif //XORLIST_XORLIST_H
