@@ -29,12 +29,9 @@ int main() {
     list.PushBack(2);
     list.PushBack(1);
     list.PushBack(0);
-    list.Print();
-    std::cout << std::endl;
+    std::cout << list.Actual()->GetKey() << std::endl;
     list.PopFront();
-    list.PopFront();
-    list.Print();
-    std::cout << std::endl;
+    std::cout << list.Actual()->GetKey() << std::endl;
 
     return 0;
 }

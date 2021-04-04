@@ -101,6 +101,7 @@ XORList::Node* XORList::Previous() {
 void XORList::PopFront() {
     if (isEmpty()) return;
     Node* tmp = begin;
+    if (actual == begin) Previous(); // if actual is also begin set actual as predecessor of begin
     if (begin == end) { // if there's only one node
         delete begin;
         begin = end = actual = prev = next = nullptr; // set all pointers to nullptr
