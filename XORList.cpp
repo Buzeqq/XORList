@@ -101,7 +101,7 @@ XORList::Node* XORList::Previous() {
 void XORList::PopFront() {
     if (isEmpty()) return;
     Node* tmp = begin;
-    if (actual == begin) Previous(); // if actual is also begin set actual as predecessor of begin
+    if (actual == begin) Previous(); // if actual is also begin, set actual as predecessor of begin
     if (begin == end) { // if there's only one node
         delete begin;
         begin = end = actual = prev = next = nullptr; // set all pointers to nullptr
@@ -114,6 +114,24 @@ void XORList::PopFront() {
         nextTmp->SetXOR(begin, nextTmp->GetNext(begin)); // set XOR of successor of new begin
     }
     delete tmp; // finally delete old begin
+}
+
+void XORList::PopBack() {
+    if (isEmpty()) return;
+    Node* tmp = end;
+    if (actual == end) Previous(); // if actual is also end, set actual as predecessor of begin
+    if (begin == end) {
+        delete end;
+        end = begin = actual = prev = next = nullptr; // set all pointers to nullptr
+        return;
+    }
+    end = end->GetPrev(nullptr); // set end as predecessor of old end
+    end->SetXOR(end->GetPrev(tmp), nullptr); // set XOR of new end
+    Node* prevTmp = end->GetPrev(nullptr); // pointer for predecessor of new end
+    if (prevTmp) { // if there's predecessor of new end
+        prevTmp->SetXOR(prevTmp->GetPrev(end), end); // set XOR of predecessor of new end
+    }
+    delete tmp; // finally delete old end
 }
 
 void XORList::Print() const {

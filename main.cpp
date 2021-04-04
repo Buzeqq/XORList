@@ -25,12 +25,14 @@ int main() {
     }*/
 
     list.PushBack(4);
-    list.PushBack(3);
+    /*list.PushBack(3);
     list.PushBack(2);
-    list.PushBack(1);
+    list.PushBack(1);*/
     list.PushBack(0);
-    std::cout << list.Actual()->GetKey() << std::endl;
-    list.PopFront();
+    list.Next();
+    list.Print();
+    std::cout << std::endl;
+    list.PopBack();
     std::cout << list.Actual()->GetKey() << std::endl;
 
     return 0;
