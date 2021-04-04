@@ -10,6 +10,7 @@
 
 class XORList {
     struct Node {
+        friend class XORList;
     private:
         int key;
         Node* addressXOR;
@@ -18,6 +19,7 @@ class XORList {
         Node(int key, Node* predecessor, Node* successor);
 
         [[nodiscard]] int GetKey() const; // getter for key
+    protected:
         Node* GetPrev(Node* successor) const; // getter for pointer of predecessor
         Node* GetNext(Node* predecessor) const; // getter for pointer of successor
 
