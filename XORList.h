@@ -49,21 +49,6 @@ public:
 
     ~XORList(); // destructor
 
-    enum COMMANDS {
-        ACTUAL = 0,
-        NEXT = 1,
-        PREV = 2,
-        ADD_BEG = 3,
-        ADD_END = 4,
-        ADD_ACT = 5,
-        DEL_BEG = 6,
-        DEL_END = 7,
-        DEL_VAL = 8,
-        DEL_ACT = 9,
-        PRINT_FORWARD = 10,
-        PRINT_BACKWARD = 11
-    };
-
 private:
     Node* begin; // begin of the list
     Node* end; // end of the list
@@ -71,12 +56,11 @@ private:
     Node* prev; // predecessor of actual
     Node* next; // successor of actual
 
-    static Node* XOR(Node* left, Node* right) {
-        return (Node*)((unsigned long)left ^ (unsigned long)right);
-    }
-
+    void Delete(Node* node, Node* left, Node* right);
     [[nodiscard]] Node* GetPrev() const; // getter for predecessor of actual
     [[nodiscard]] Node* GetNext() const; // getter for successor of actual
 };
+
+
 
 #endif //XORLIST_XORLIST_H

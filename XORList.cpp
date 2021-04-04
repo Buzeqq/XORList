@@ -113,6 +113,7 @@ void XORList::PopFront() {
     if (nextTmp) { // if there's successor of new begin
         nextTmp->SetXOR(begin, nextTmp->GetNext(begin)); // set XOR of successor of new begin
     }
+    if (tmp == prev) prev = nullptr; // if deleting node is pointed by prev, set prev to nullptr to make prev usable
     delete tmp; // finally delete old begin
 }
 
@@ -131,10 +132,36 @@ void XORList::PopBack() {
     if (prevTmp) { // if there's predecessor of new end
         prevTmp->SetXOR(prevTmp->GetPrev(end), end); // set XOR of predecessor of new end
     }
+    if (next == tmp) next = nullptr; // if deleting node is pointed by next, set next to nullptr to make next usable
     delete tmp; // finally delete old end
 }
 
+void XORList::DeleteValues(int n) {
+    if (isEmpty()) return;
+    Node* predecessor = nullptr, *node = begin, *successor = begin->GetNext(nullptr);
+    while (node != nullptr) {
+        if (node->GetKey() == n) { // delete if the key matches value
+            Delete(node, predecessor, successor); // after deleting predecessor is at right place
+            node = successor; // sets new node as old successor
+            if (successor) successor = successor->GetNext(predecessor); // new successor is after old one if it is possible
+        } else {
+            Node* tmp = node;
+            predecessor = node;
+            node = successor;
+            if (successor) successor = successor->GetNext(tmp); // move all pointers to left, check if can move successor to left
+        }
+    }
+}
+
+void XORList::DeleteActual() {
+    Delete(Actual(), GetPrev(), GetNext());
+}
+
 void XORList::Print() const {
+    if (isEmpty()) {
+        std::cout << "NULL" << std::endl;
+        return;
+    }
     Node* actualTmp = begin, *prevTmp = nullptr;
     while (actualTmp != nullptr) { // if you can, move actualTmp and prevTmp to the right
         std::cout << actualTmp->GetKey() << " ";
@@ -142,16 +169,38 @@ void XORList::Print() const {
         actualTmp = actualTmp->GetNext(prevTmp);
         prevTmp = tmp;
     }
+    std::cout << std::endl;
 }
 
 void XORList::PrintBackward() const {
+    if (isEmpty()) {
+        std::cout << "NULL" << std::endl;
+        return;
+    }
     Node* actualTmp = end, *nextTmp = nullptr;
-    while (actualTmp != nullptr) {
+    while (actualTmp != nullptr) { // if you can, move actualTmp and prevTmp to the left
         std::cout << actualTmp->GetKey() << " ";
         Node* tmp = actualTmp;
         actualTmp = actualTmp->GetPrev(nextTmp);
         nextTmp = tmp;
     }
+    std::cout << std::endl;
+}
+
+void XORList::Delete(Node *node, Node *left, Node *right) {
+    if (!node) return; // if node does not exist
+    if (node == begin) { // if node is begin
+        PopFront();
+        return;
+    }
+    if (node == end) { // if node is end
+        PopBack();
+        return;
+    }
+    if (node == actual) Previous(); // if node is also actual
+    left->SetXOR(left->GetPrev(node), right);
+    right->SetXOR(left, right->GetNext(node));
+    delete node;
 }
 
 XORList::~XORList() {
