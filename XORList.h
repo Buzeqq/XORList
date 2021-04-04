@@ -26,8 +26,8 @@ class XORList {
 
 public:
     XORList();
-    [[nodiscard]] Node* Begin() const; // getter for begin
-    [[nodiscard]] Node* End() const; // getter for end
+    [[maybe_unused]] [[nodiscard]] Node* Begin() const; // getter for begin
+    [[maybe_unused]] [[nodiscard]] Node* End() const; // getter for end
     [[nodiscard]] Node* Actual() const; // getter for actual
 
     Node* Next(); // sets new actual as successor of actual and returns new actual

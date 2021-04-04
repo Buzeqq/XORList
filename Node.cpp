@@ -5,7 +5,6 @@
 
 XORList::Node::Node(int key, Node* predecessor, Node* successor) {
     this->key = key;
-    addressXOR = nullptr;
     addressXOR = (Node*)((unsigned long)predecessor ^ (unsigned long)successor);
 }
 

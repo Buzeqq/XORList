@@ -3,7 +3,7 @@
 //
 #include "XORList.h"
 
-XORList::XORList(): begin(nullptr), end(nullptr), actual(nullptr), next(nullptr), prev(nullptr) {}
+XORList::XORList(): begin(nullptr), end(nullptr), actual(nullptr), prev(nullptr), next(nullptr) {}
 
 XORList::Node* XORList::Begin() const {
     return begin;
