@@ -44,7 +44,7 @@ public:
     void DeleteValues(int n); // deletes all nodes with key n
     void DeleteActual(); // deletes node that is pointed by actual
 
-    void Print() const; // prints list (maybe operator<< overload)
+    void Print() const; // prints list
     void PrintBackward() const; // prints list, but backwards
 
     [[nodiscard]] bool isEmpty() const; // checks if list is empty
@@ -63,6 +63,6 @@ private:
     [[nodiscard]] Node* GetNext() const; // getter for successor of actual
 };
 
-
+std::ostream& operator<<(std::ostream& stream, const XORList& list); // print list with << operator
 
 #endif //XORLIST_XORLIST_H

@@ -17,7 +17,7 @@ XORList::Node* XORList::Node::GetNext(XORList::Node* predecessor) const {   // t
 }                                                                           // whether I want to go to prev or next
 
 XORList::Node* XORList::Node::GetPrev(XORList::Node* successor) const { // for the comment look up at line 15
-    return (Node*)((unsigned long)addressXOR ^ (unsigned long)successor);
+    return GetNext(successor);
 }
 
 int XORList::Node::GetKey() const {

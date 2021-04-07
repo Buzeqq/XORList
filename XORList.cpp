@@ -213,3 +213,8 @@ XORList::~XORList() {
     }
     delete end; // in order to free all memory we have to do also this
 }
+
+std::ostream& operator<<(std::ostream& stream, const XORList& list) {
+    list.Print();
+    return stream;
+}
